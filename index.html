@@ -6,15 +6,18 @@
   <title>毕文君 | 产品经理</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --yellow: #FFE66D;
-      --pink: #FF6B9D;
-      --blue: #4ECDC4;
-      --purple: #C44DFF;
-      --black: #2D3436;
-      --white: #FFFFFF;
+      --bg: #F8F6F3;
+      --bg-card: #FFFFFF;
+      --text: #2C3E2D;
+      --text-secondary: #6B7C6B;
+      --accent: #4A6741;
+      --sage: #8FAE8B;
+      --sage-light: #D4E4D1;
+      --cream: #FDF8F3;
+      --stone: #E8E4DE;
     }
 
     * {
@@ -24,15 +27,16 @@
     }
 
     body {
-      font-family: 'Space Grotesk', sans-serif;
-      background: var(--white);
-      color: var(--black);
+      font-family: 'Noto Sans SC', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
       min-height: 100vh;
-      overflow-x: hidden;
+      position: relative;
     }
 
-    /* 背景装饰 */
-    .bg-shapes {
+    /* Organic Background */
+    .bg-organic {
       position: fixed;
       top: 0;
       left: 0;
@@ -43,294 +47,273 @@
       overflow: hidden;
     }
 
-    .shape {
+    .blob {
       position: absolute;
-      opacity: 0.6;
-    }
-
-    .shape-1 {
-      width: 200px;
-      height: 200px;
-      background: var(--yellow);
       border-radius: 50%;
-      top: -50px;
-      right: -50px;
-      animation: float 6s ease-in-out infinite;
+      filter: blur(60px);
+      opacity: 0.4;
     }
 
-    .shape-2 {
-      width: 120px;
-      height: 120px;
-      background: var(--pink);
-      top: 20%;
-      left: -30px;
-      transform: rotate(45deg);
-      animation: float 8s ease-in-out infinite reverse;
+    .blob-1 {
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(135deg, var(--sage-light), #C8E6C9);
+      top: -100px;
+      right: -100px;
+      animation: drift 20s ease-in-out infinite;
     }
 
-    .shape-3 {
-      width: 80px;
-      height: 80px;
-      background: var(--blue);
-      border-radius: 50%;
-      bottom: 20%;
-      right: 10%;
-      animation: float 7s ease-in-out infinite;
+    .blob-2 {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, #FFE4D4, #FFECD2);
+      bottom: 10%;
+      left: -50px;
+      animation: drift 25s ease-in-out infinite reverse;
     }
 
-    .shape-4 {
-      width: 0;
-      height: 0;
-      border-left: 40px solid transparent;
-      border-right: 40px solid transparent;
-      border-bottom: 70px solid var(--purple);
-      top: 60%;
-      left: 5%;
-      animation: float 9s ease-in-out infinite reverse;
-    }
-
-    .shape-5 {
-      width: 60px;
-      height: 60px;
-      background: var(--black);
-      border-radius: 50%;
+    .blob-3 {
+      width: 250px;
+      height: 250px;
+      background: linear-gradient(135deg, var(--sage-light), #B2DFDB);
       top: 40%;
-      right: 20%;
-      animation: float 5s ease-in-out infinite;
+      right: 10%;
+      animation: drift 18s ease-in-out infinite;
     }
 
-    .dots {
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(var(--black) 1px, transparent 1px);
-      background-size: 30px 30px;
-      opacity: 0.05;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(5deg); }
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -20px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
     }
 
     .container {
       position: relative;
       z-index: 1;
-      max-width: 800px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 60px 24px;
+      padding: 80px 24px;
     }
 
     /* Header */
     header {
       text-align: center;
       margin-bottom: 60px;
-      animation: slideDown 0.8s ease;
+      animation: fadeIn 1s ease;
     }
 
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-30px); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .avatar {
       width: 140px;
       height: 140px;
-      background: var(--yellow);
+      margin: 0 auto 28px;
+      position: relative;
+    }
+
+    .avatar-circle {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, var(--sage-light), var(--sage));
       border-radius: 50%;
-      margin: 0 auto 24px;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-family: 'Noto Serif SC', serif;
       font-size: 48px;
-      font-weight: 700;
-      color: var(--black);
-      border: 4px solid var(--black);
-      box-shadow: 8px 8px 0 var(--black);
-      position: relative;
+      font-weight: 600;
+      color: var(--accent);
+      box-shadow: 
+        0 8px 32px rgba(74, 103, 65, 0.15),
+        inset 0 2px 8px rgba(255, 255, 255, 0.5);
     }
 
-    .avatar::before {
-      content: '';
+    .avatar-ring {
       position: absolute;
       width: 100%;
       height: 100%;
-      border: 4px dashed var(--pink);
+      border: 2px solid var(--sage);
       border-radius: 50%;
-      animation: spin 20s linear infinite;
+      top: 8px;
+      left: 8px;
+      opacity: 0.5;
+      animation: pulse 4s ease-in-out infinite;
     }
 
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.2; }
     }
 
     .name {
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      font-weight: 700;
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(2.2rem, 6vw, 3rem);
+      font-weight: 600;
+      color: var(--text);
       margin-bottom: 8px;
-      position: relative;
-      display: inline-block;
-    }
-
-    .name::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 100%;
-      height: 8px;
-      background: var(--blue);
-      z-index: -1;
+      letter-spacing: 0.1em;
     }
 
     .role {
-      font-size: 1.2rem;
-      color: var(--black);
-      background: var(--white);
-      padding: 8px 20px;
-      border: 3px solid var(--black);
-      display: inline-block;
-      box-shadow: 4px 4px 0 var(--black);
+      font-size: 1rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      letter-spacing: 0.15em;
     }
 
-    /* Section */
-    section {
-      background: var(--white);
-      border: 3px solid var(--black);
-      padding: 32px;
-      margin-bottom: 32px;
-      box-shadow: 6px 6px 0 var(--black);
-      animation: slideUp 0.8s ease backwards;
+    .location {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      padding: 6px 16px;
+      background: var(--bg-card);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
     }
 
-    section:nth-child(2) { animation-delay: 0.1s; }
-    section:nth-child(3) { animation-delay: 0.2s; }
-    section:nth-child(4) { animation-delay: 0.3s; }
-    section:nth-child(5) { animation-delay: 0.4s; }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .section-title {
-      font-size: 1.3rem;
-      font-weight: 700;
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border-radius: 24px;
+      padding: 36px;
       margin-bottom: 24px;
+      box-shadow: 
+        0 4px 24px rgba(74, 103, 65, 0.08),
+        0 1px 3px rgba(0, 0, 0, 0.04);
+      animation: fadeIn 1s ease backwards;
+    }
+
+    .card:nth-child(2) { animation-delay: 0.15s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.45s; }
+    .card:nth-child(5) { animation-delay: 0.6s; }
+
+    .card-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .section-title::before {
-      content: '◆';
-      color: var(--pink);
+    .card-title::before {
+      content: '';
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(to bottom, var(--sage), var(--accent));
+      border-radius: 2px;
     }
 
     /* About */
     .about p {
-      font-size: 1.1rem;
-      line-height: 1.8;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.9;
     }
 
     /* Skills */
-    .skills-grid {
+    .skills-wrap {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
     .skill-tag {
-      padding: 12px 20px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      border: 2px solid var(--black);
-      transition: all 0.2s ease;
-      cursor: default;
+      padding: 10px 18px;
+      background: var(--cream);
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: var(--accent);
+      border: 1px solid var(--stone);
+      transition: all 0.3s ease;
     }
 
-    .skill-tag:nth-child(8n+1) { background: var(--yellow); }
-    .skill-tag:nth-child(8n+2) { background: var(--pink); }
-    .skill-tag:nth-child(8n+3) { background: var(--blue); }
-    .skill-tag:nth-child(8n+4) { background: var(--purple); color: white; }
-    .skill-tag:nth-child(8n+5) { background: var(--white); }
-    .skill-tag:nth-child(8n+6) { background: var(--yellow); }
-    .skill-tag:nth-child(8n+7) { background: var(--pink); }
-    .skill-tag:nth-child(8n+8) { background: var(--blue); }
-
     .skill-tag:hover {
-      transform: translate(-4px, -4px);
-      box-shadow: 4px 4px 0 var(--black);
+      background: var(--sage-light);
+      border-color: var(--sage);
+      transform: translateY(-2px);
     }
 
     /* Projects */
     .project-item {
-      padding: 20px;
+      padding: 24px;
+      background: linear-gradient(135deg, var(--cream), var(--bg-card));
+      border-radius: 16px;
       margin-bottom: 16px;
-      border: 2px solid var(--black);
-      background: var(--white);
-      transition: all 0.2s ease;
-      position: relative;
+      border: 1px solid var(--stone);
+      transition: all 0.3s ease;
     }
 
     .project-item:last-child {
       margin-bottom: 0;
     }
 
-    .project-item:nth-child(odd) {
-      background: var(--yellow);
-    }
-
-    .project-item:nth-child(even) {
-      background: var(--blue);
-    }
-
     .project-item:hover {
-      transform: translate(4px, 4px);
-      box-shadow: none;
+      border-color: var(--sage);
+      box-shadow: 0 4px 20px rgba(74, 103, 65, 0.1);
     }
 
     .project-name {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 8px;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 6px;
     }
 
     .project-desc {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .project-stat {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 4px 12px;
+      background: var(--sage-light);
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: var(--accent);
     }
 
     /* Contact */
     .contact-list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
     }
 
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       padding: 16px 20px;
-      background: var(--white);
-      border: 2px solid var(--black);
+      background: var(--cream);
+      border-radius: 16px;
       text-decoration: none;
-      color: var(--black);
-      font-weight: 500;
-      transition: all 0.2s ease;
+      color: var(--text);
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
     }
 
     .contact-item:hover {
-      background: var(--black);
-      color: var(--white);
-      transform: translate(-4px, -4px);
-      box-shadow: 4px 4px 0 var(--pink);
+      background: var(--sage-light);
+      border-color: var(--sage);
     }
 
     .contact-icon {
       width: 40px;
       height: 40px;
-      background: var(--pink);
+      background: var(--bg-card);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -341,83 +324,85 @@
     /* Footer */
     footer {
       text-align: center;
-      padding: 32px;
+      padding: 40px 20px;
       margin-top: 20px;
     }
 
-    .copyright {
-      font-size: 0.9rem;
-      color: var(--black);
-      background: var(--yellow);
-      display: inline-block;
-      padding: 12px 24px;
-      border: 2px solid var(--black);
-      box-shadow: 4px 4px 0 var(--black);
+    .footer-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.1em;
     }
 
-    /* Decorative elements */
-    .deco-line {
-      width: 100%;
-      height: 4px;
-      background: repeating-linear-gradient(
-        90deg,
-        var(--black) 0,
-        var(--black) 10px,
-        var(--yellow) 10px,
-        var(--yellow) 20px,
-        var(--pink) 20px,
-        var(--pink) 30px,
-        var(--blue) 30px,
-        var(--blue) 40px
-      );
-      margin: 40px 0;
+    /* Decorative leaf */
+    .leaf {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      opacity: 0.15;
+    }
+
+    .leaf-1 {
+      top: 20%;
+      right: 5%;
+      transform: rotate(30deg);
+    }
+
+    .leaf-2 {
+      bottom: 30%;
+      left: 3%;
+      transform: rotate(-20deg);
     }
 
     /* Responsive */
     @media (max-width: 600px) {
       .container {
-        padding: 40px 16px;
+        padding: 50px 16px;
       }
 
-      section {
-        padding: 24px 20px;
+      .card {
+        padding: 24px;
       }
 
       .avatar {
-        width: 100px;
-        height: 100px;
-        font-size: 36px;
+        width: 110px;
+        height: 110px;
+      }
+
+      .avatar-circle {
+        font-size: 40px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="bg-shapes">
-    <div class="shape shape-1"></div>
-    <div class="shape shape-2"></div>
-    <div class="shape shape-3"></div>
-    <div class="shape shape-4"></div>
-    <div class="shape shape-5"></div>
-    <div class="dots"></div>
+  <div class="bg-organic">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
   </div>
 
   <div class="container">
     <header>
-      <div class="avatar">B</div>
+      <div class="avatar">
+        <div class="avatar-circle">B</div>
+        <div class="avatar-ring"></div>
+      </div>
       <h1 class="name">毕文君</h1>
-      <div class="role">产品经理 · 上海</div>
+      <p class="role">产品经理</p>
+      <div class="location">
+        <span>📍</span> 上海
+      </div>
     </header>
 
-    <div class="deco-line"></div>
-
-    <section class="about">
-      <h2 class="section-title">关于我</h2>
-      <p>专注 AI 产品设计与用户增长。热爱技术，擅长在复杂需求中找到简洁优雅的解决方案。相信好的产品应该让人用了心情愉悦。孟菲斯风格爱好者！</p>
+    <section class="card about">
+      <h2 class="card-title">关于我</h2>
+      <p>专注 AI 产品设计与用户增长。热爱技术，擅长在复杂需求中找到简洁优雅的解决方案。相信好的产品应该让人用了心情愉悦。</p>
     </section>
 
-    <section class="skills">
-      <h2 class="section-title">技能树</h2>
-      <div class="skills-grid">
+    <section class="card skills">
+      <h2 class="card-title">技能</h2>
+      <div class="skills-wrap">
         <span class="skill-tag">产品规划</span>
         <span class="skill-tag">需求分析</span>
         <span class="skill-tag">用户研究</span>
@@ -429,24 +414,27 @@
       </div>
     </section>
 
-    <section class="projects">
-      <h2 class="section-title">项目作品</h2>
+    <section class="card projects">
+      <h2 class="card-title">项目</h2>
       <div class="project-item">
-        <h3 class="project-name">🚀 AI 智能助手平台</h3>
-        <p class="project-desc">从 0 到 1 搭建企业级 AI 对话平台，月活用户 10w+</p>
+        <h3 class="project-name">AI 智能助手平台</h3>
+        <p class="project-desc">从 0 到 1 搭建企业级 AI 对话平台</p>
+        <span class="project-stat">月活 10w+</span>
       </div>
       <div class="project-item">
-        <h3 class="project-name">📊 数据可视化后台</h3>
-        <p class="project-desc">重构企业数据看板，提升 40% 运营效率</p>
+        <h3 class="project-name">数据可视化后台</h3>
+        <p class="project-desc">重构企业数据看板</p>
+        <span class="project-stat">效率提升 40%</span>
       </div>
       <div class="project-item">
-        <h3 class="project-name">📈 用户增长体系</h3>
-        <p class="project-desc">设计完整的用户激励与留存方案，次日留存提升 25%</p>
+        <h3 class="project-name">用户增长体系</h3>
+        <p class="project-desc">设计完整的用户激励与留存方案</p>
+        <span class="project-stat">次日留存 +25%</span>
       </div>
     </section>
 
-    <section class="contact">
-      <h2 class="section-title">联系我</h2>
+    <section class="card contact">
+      <h2 class="card-title">联系</h2>
       <div class="contact-list">
         <a href="mailto:biwenjun@email.com" class="contact-item">
           <span class="contact-icon">✉️</span>
@@ -459,10 +447,8 @@
       </div>
     </section>
 
-    <div class="deco-line"></div>
-
     <footer>
-      <div class="copyright">© 2026 毕文君 · 产品经理</div>
+      <p class="footer-text">© 2026 毕文君</p>
     </footer>
   </div>
 </body>
