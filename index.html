@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>毕文君 | 产品经理</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --text-secondary: #666;
+      --accent: #2a2a2a;
+      --line: #e5e5e5;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'Instrument Sans', -apple-system, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    /* Header */
+    header {
+      margin-bottom: 80px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .name {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .role {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Section */
+    section {
+      margin-bottom: 64px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    section:nth-child(2) { animation-delay: 0.1s; }
+    section:nth-child(3) { animation-delay: 0.2s; }
+    section:nth-child(4) { animation-delay: 0.3s; }
+    section:nth-child(5) { animation-delay: 0.4s; }
+
+    .section-title {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* About */
+    .about p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 520px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill-tag {
+      padding: 8px 16px;
+      background: white;
+      border: 1px solid var(--line);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      transform: translateY(-2px);
+    }
+
+    /* Projects */
+    .project-item {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+      transition: padding-left 0.3s ease;
+    }
+
+    .project-item:last-child {
+      border-bottom: none;
+    }
+
+    .project-item:hover {
+      padding-left: 8px;
+    }
+
+    .project-name {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Contact */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .contact-item:hover {
+      color: var(--text-secondary);
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      width: 60px;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 120px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        padding: 48px 20px;
+      }
+
+      .name {
+        font-size: 2.5rem;
+      }
+
+      section {
+        margin-bottom: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="name">毕文君</h1>
+      <p class="role">产品经理 · 上海</p>
+    </header>
+
+    <section class="about">
+      <h2 class="section-title">关于</h2>
+      <p>专注 AI 产品设计与用户增长。热爱技术，擅长在复杂需求中找到简洁优雅的解决方案。相信好的产品应该让人用了心情愉悦。</p>
+    </section>
+
+    <section class="skills">
+      <h2 class="section-title">技能</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">产品规划</span>
+        <span class="skill-tag">需求分析</span>
+        <span class="skill-tag">用户研究</span>
+        <span class="skill-tag">数据分析</span>
+        <span class="skill-tag">AI 产品</span>
+        <span class="skill-tag">B 端产品</span>
+        <span class="skill-tag">PRD 撰写</span>
+        <span class="skill-tag">原型设计</span>
+      </div>
+    </section>
+
+    <section class="projects">
+      <h2 class="section-title">项目</h2>
+      <div class="project-item">
+        <h3 class="project-name">AI 智能助手平台</h3>
+        <p class="project-desc">从 0 到 1 搭建企业级 AI 对话平台，月活用户 10w+</p>
+      </div>
+      <div class="project-item">
+        <h3 class="project-name">数据可视化后台</h3>
+        <p class="project-desc">重构企业数据看板，提升 40% 运营效率</p>
+      </div>
+      <div class="project-item">
+        <h3 class="project-name">用户增长体系</h3>
+        <p class="project-desc">设计完整的用户激励与留存方案，次日留存提升 25%</p>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2 class="section-title">联系</h2>
+      <div class="contact-list">
+        <a href="mailto:biwenjun@email.com" class="contact-item">
+          <span class="contact-label">邮箱</span>
+          <span>biwenjun@email.com</span>
+        </a>
+        <a href="#" class="contact-item">
+          <span class="contact-label">微信</span>
+          <span>Biwenjun_PM</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 毕文君. 简约而不简单.</p>
+    </footer>
+  </div>
+</body>
+</html>
