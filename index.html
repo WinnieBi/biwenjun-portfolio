@@ -6,19 +6,15 @@
   <title>毕文君 | 产品经理</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #0a0a0f;
-      --bg-card: #12121a;
-      --cyan: #00f0ff;
-      --pink: #ff00aa;
-      --purple: #b400ff;
-      --yellow: #ffee00;
-      --text: #e0e0e0;
-      --text-dim: #666680;
-      --glow-cyan: 0 0 20px rgba(0, 240, 255, 0.5);
-      --glow-pink: 0 0 20px rgba(255, 0, 170, 0.5);
+      --bg: #F5F3EF;
+      --ink: #1a1a1a;
+      --accent: #C41E3A;
+      --cream: #FFF8E7;
+      --gray: #6B6B6B;
+      --light-gray: #E8E6E1;
     }
 
     * {
@@ -28,570 +24,484 @@
     }
 
     body {
-      font-family: 'Rajdhani', sans-serif;
-      background: var(--bg-dark);
-      color: var(--text);
-      min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
     }
 
-    /* Cyber Grid Background */
-    .bg-cyber {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      background: 
-        linear-gradient(transparent 95%, rgba(0, 240, 255, 0.03) 95%),
-        linear-gradient(90deg, transparent 95%, rgba(0, 240, 255, 0.03) 95%);
-      background-size: 50px 50px;
-    }
-
-    .bg-scanline {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0, 0, 0, 0.1) 2px,
-        rgba(0, 0, 0, 0.1) 4px
-      );
-    }
-
-    .bg-glow {
-      position: fixed;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      filter: blur(120px);
-      z-index: 0;
-    }
-
-    .glow-1 {
-      top: -200px;
-      right: -200px;
-      background: var(--cyan);
-      opacity: 0.15;
-      animation: glowPulse 8s ease-in-out infinite;
-    }
-
-    .glow-2 {
-      bottom: -200px;
-      left: -200px;
-      background: var(--pink);
-      opacity: 0.1;
-      animation: glowPulse 10s ease-in-out infinite reverse;
-    }
-
-    @keyframes glowPulse {
-      0%, 100% { opacity: 0.15; transform: scale(1); }
-      50% { opacity: 0.25; transform: scale(1.1); }
-    }
-
-    .container {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
+    /* Magazine Grid Layout */
+    .magazine-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto auto;
+      gap: 0;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 60px 20px;
+      background: var(--bg);
+      border: 8px solid var(--ink);
     }
 
-    /* Glitch Effect */
-    .glitch {
-      position: relative;
-      animation: glitch 3s infinite;
-    }
-
-    @keyframes glitch {
-      0%, 90%, 100% { transform: translate(0); }
-      92% { transform: translate(-2px, 1px); }
-      94% { transform: translate(2px, -1px); }
-      96% { transform: translate(-1px, -1px); }
-      98% { transform: translate(1px, 1px); }
-    }
-
-    /* Header */
-    header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .avatar-container {
-      position: relative;
-      width: 150px;
-      height: 150px;
-      margin: 0 auto 24px;
-    }
-
-    .avatar {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 56px;
-      font-weight: 900;
-      color: var(--bg-dark);
-      position: relative;
-      z-index: 2;
-      box-shadow: var(--glow-cyan);
-    }
-
-    .avatar-ring {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border: 2px solid var(--cyan);
-      border-radius: 50%;
-      top: 0;
-      left: 0;
-      animation: rotate 10s linear infinite;
-    }
-
-    .avatar-ring::before {
-      content: '';
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: var(--cyan);
-      border-radius: 50%;
-      top: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      box-shadow: var(--glow-cyan);
-    }
-
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .avatar-corner {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      border: 2px solid var(--pink);
-    }
-
-    .avatar-corner.tl { top: -5px; left: -5px; border-right: none; border-bottom: none; }
-    .avatar-corner.tr { top: -5px; right: -5px; border-left: none; border-bottom: none; }
-    .avatar-corner.bl { bottom: -5px; left: -5px; border-right: none; border-top: none; }
-    .avatar-corner.br { bottom: -5px; right: -5px; border-left: none; border-top: none; }
-
-    .name {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(2rem, 6vw, 3rem);
-      font-weight: 900;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      background: linear-gradient(90deg, var(--cyan), var(--pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: none;
-      filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.3));
-    }
-
-    .role {
-      font-size: 1.1rem;
-      color: var(--cyan);
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      font-weight: 500;
-      text-shadow: var(--glow-cyan);
-    }
-
-    .location {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 16px;
-      padding: 8px 20px;
-      background: rgba(0, 240, 255, 0.1);
-      border: 1px solid var(--cyan);
-      border-radius: 4px;
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .location::before {
-      content: '◆';
-      color: var(--pink);
-      animation: blink 2s infinite;
-    }
-
-    @keyframes blink {
-      0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0.3; }
-    }
-
-    /* Decorative Line */
-    .deco-line {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--cyan), var(--pink), var(--cyan), transparent);
-      margin: 40px 0;
-      position: relative;
-    }
-
-    .deco-line::before {
-      content: '[ SYSTEM ONLINE ]';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      background: var(--bg-dark);
-      padding: 0 20px;
-      font-size: 0.7rem;
-      color: var(--cyan);
-      letter-spacing: 0.2em;
-    }
-
-    /* Card */
-    .card {
-      background: var(--bg-card);
-      border: 1px solid rgba(0, 240, 255, 0.2);
-      padding: 28px;
-      margin-bottom: 20px;
+    /* Header - Full Width */
+    .header {
+      grid-column: 1 / -1;
+      padding: 60px 40px;
+      background: var(--ink);
+      color: var(--bg);
       position: relative;
       overflow: hidden;
     }
 
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--cyan), var(--pink));
-    }
-
-    .card::after {
+    .header::before {
       content: '';
       position: absolute;
       top: 0;
       right: 0;
-      width: 20px;
-      height: 20px;
-      border-top: 2px solid var(--cyan);
-      border-right: 2px solid var(--cyan);
+      width: 40%;
+      height: 100%;
+      background: var(--accent);
+      clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
     }
 
-    .card-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--cyan);
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .issue-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
       margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      display: flex;
-      align-items: center;
-      gap: 12px;
     }
 
-    .card-title::before {
-      content: '>';
-      color: var(--pink);
+    .name-large {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(4rem, 12vw, 9rem);
       font-weight: 900;
+      line-height: 0.85;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
     }
 
-    /* About */
-    .about p {
-      font-size: 1rem;
-      line-height: 1.9;
-      color: var(--text-dim);
+    .role-large {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--gray);
     }
 
-    .about p span {
-      color: var(--cyan);
-    }
-
-    /* Skills */
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill-tag {
-      padding: 10px 16px;
-      background: transparent;
-      border: 1px solid var(--purple);
-      font-size: 0.85rem;
-      color: var(--purple);
-      text-transform: uppercase;
+    .header-meta {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      text-align: right;
+      font-size: 0.75rem;
       letter-spacing: 0.1em;
-      transition: all 0.3s ease;
+      color: var(--bg);
+      opacity: 0.7;
+    }
+
+    /* Featured Image Area */
+    .feature-image {
+      grid-column: 1 / 2;
+      aspect-ratio: 3/4;
+      background: var(--cream);
       position: relative;
       overflow: hidden;
     }
 
-    .skill-tag::before {
+    .feature-image::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: var(--purple);
-      transition: left 0.3s ease;
-      z-index: -1;
-    }
-
-    .skill-tag:hover {
-      color: var(--bg-dark);
-      box-shadow: var(--glow-pink);
-    }
-
-    .skill-tag:hover::before {
+      bottom: 0;
       left: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(to top, var(--ink), transparent);
     }
 
-    /* Projects */
-    .project-item {
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.3);
-      border-left: 3px solid var(--cyan);
-      margin-bottom: 14px;
+    .feature-initial {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 20rem;
+      font-weight: 900;
+      color: var(--ink);
+      opacity: 0.08;
+    }
+
+    /* About Section */
+    .about-section {
+      grid-column: 2 / 3;
+      padding: 40px;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .about-text {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--gray);
+    }
+
+    /* Skills Section */
+    .skills-section {
+      grid-column: 1 / -1;
+      padding: 50px 40px;
+      background: var(--cream);
+      border-top: 8px solid var(--ink);
+      border-bottom: 8px solid var(--ink);
+    }
+
+    .skills-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .skills-title span {
+      color: var(--accent);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .skill-item {
+      padding: 24px 16px;
+      text-align: center;
+      border: 1px solid var(--light-gray);
       transition: all 0.3s ease;
     }
 
-    .project-item:last-child {
-      margin-bottom: 0;
+    .skill-item:hover {
+      background: var(--ink);
+      color: var(--bg);
     }
 
-    .project-item:hover {
-      background: rgba(0, 240, 255, 0.05);
-      border-left-color: var(--pink);
-      padding-left: 26px;
+    .skill-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    /* Projects Section */
+    .projects-section {
+      grid-column: 1 / 2;
+      padding: 40px;
+      background: var(--bg);
+    }
+
+    .project-item {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .project-item:first-child {
+      padding-top: 0;
+    }
+
+    .project-item:last-child {
+      border-bottom: none;
     }
 
     .project-name {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .project-name::before {
-      content: '//';
-      color: var(--pink);
-      font-size: 0.8rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
 
     .project-desc {
       font-size: 0.9rem;
-      color: var(--text-dim);
-      margin-left: 24px;
+      color: var(--gray);
+      line-height: 1.7;
     }
 
     .project-stat {
       display: inline-block;
-      margin-top: 8px;
-      margin-left: 24px;
-      padding: 4px 10px;
-      background: rgba(0, 240, 255, 0.1);
-      border: 1px solid var(--cyan);
-      font-size: 0.75rem;
-      color: var(--cyan);
-      font-family: 'Orbitron', sans-serif;
+      margin-top: 12px;
+      padding: 4px 12px;
+      background: var(--accent);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
     }
 
-    /* Contact */
-    .contact-list {
+    /* Quote Section */
+    .quote-section {
+      grid-column: 2 / 3;
+      padding: 40px;
+      background: var(--ink);
+      color: var(--bg);
       display: flex;
-      flex-direction: column;
-      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .quote-text::before {
+      content: '"';
+      display: block;
+      font-size: 4rem;
+      color: var(--accent);
+      line-height: 0.5;
+      margin-bottom: 20px;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      grid-column: 1 / -1;
+      padding: 40px;
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      border-top: 8px solid var(--ink);
     }
 
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 14px 18px;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 0, 170, 0.3);
-      text-decoration: none;
-      color: var(--text);
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-    }
-
-    .contact-item:hover {
-      border-color: var(--pink);
-      background: rgba(255, 0, 170, 0.1);
-      box-shadow: var(--glow-pink);
+      gap: 16px;
     }
 
     .contact-icon {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      border-radius: 4px;
+      width: 48px;
+      height: 48px;
+      background: var(--ink);
+      color: var(--bg);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 1.2rem;
     }
 
     .contact-label {
-      color: var(--text-dim);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      display: block;
+      color: var(--gray);
+      margin-bottom: 2px;
     }
 
     .contact-value {
-      color: var(--cyan);
-      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
     }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      margin-top: 40px;
+    /* Footer Banner */
+    .footer-banner {
+      grid-column: 1 / -1;
+      padding: 30px 40px;
+      background: var(--accent);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .footer-text {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.75rem;
-      color: var(--text-dim);
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .footer-date {
+      font-size: 0.8rem;
       letter-spacing: 0.2em;
     }
 
-    .footer-text span {
-      color: var(--pink);
-      animation: blink 1s infinite;
-    }
-
     /* Responsive */
-    @media (max-width: 600px) {
-      .container {
-        padding: 40px 16px;
+    @media (max-width: 768px) {
+      .magazine-grid {
+        grid-template-columns: 1fr;
+        border-width: 4px;
       }
 
-      .avatar-container {
-        width: 120px;
-        height: 120px;
+      .header {
+        padding: 40px 24px;
       }
 
-      .avatar {
-        font-size: 44px;
+      .header::before {
+        width: 60%;
+        clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
       }
 
-      .card {
-        padding: 20px;
+      .header-meta {
+        position: static;
+        text-align: left;
+        margin-top: 20px;
+      }
+
+      .feature-image {
+        grid-column: 1;
+        aspect-ratio: 1;
+      }
+
+      .feature-initial {
+        font-size: 12rem;
+      }
+
+      .about-section,
+      .projects-section,
+      .quote-section,
+      .contact-section {
+        grid-column: 1;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-section {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="bg-cyber"></div>
-  <div class="bg-glow glow-1"></div>
-  <div class="bg-glow glow-2"></div>
-  <div class="bg-scanline"></div>
-
-  <div class="container">
-    <header>
-      <div class="avatar-container">
-        <div class="avatar">B</div>
-        <div class="avatar-ring"></div>
-        <div class="avatar-corner tl"></div>
-        <div class="avatar-corner tr"></div>
-        <div class="avatar-corner bl"></div>
-        <div class="avatar-corner br"></div>
+  <div class="magazine-grid">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <p class="issue-number">Issue 001 • Shanghai</p>
+        <h1 class="name-large">毕文君</h1>
+        <p class="role-large">Product Manager</p>
       </div>
-      <h1 class="name glitch">BIWENJUN</h1>
-      <p class="role">Product Manager</p>
-      <div class="location">Shanghai // China</div>
+      <div class="header-meta">
+        <p>VOL. 01</p>
+        <p>2026.04.07</p>
+      </div>
     </header>
 
-    <div class="deco-line"></div>
+    <!-- Feature Image -->
+    <div class="feature-image">
+      <span class="feature-initial">B</span>
+    </div>
 
-    <section class="card about">
-      <h2 class="card-title">About</h2>
-      <p><span>></span> 专注 AI 产品设计与用户增长。热爱技术，擅长在复杂需求中找到简洁优雅的解决方案。相信好的产品应该让人用了心情愉悦。</p>
+    <!-- About -->
+    <section class="about-section">
+      <p class="section-label">About</p>
+      <p class="about-text">专注 AI 产品设计与用户增长。热爱技术，擅长在复杂需求中找到简洁优雅的解决方案。相信好的产品应该让人用了心情愉悦。</p>
     </section>
 
-    <section class="card skills">
-      <h2 class="card-title">Skills</h2>
+    <!-- Skills -->
+    <section class="skills-section">
+      <h2 class="skills-title">Expertise <span>&</span> Skills</h2>
       <div class="skills-grid">
-        <span class="skill-tag">产品规划</span>
-        <span class="skill-tag">需求分析</span>
-        <span class="skill-tag">用户研究</span>
-        <span class="skill-tag">数据分析</span>
-        <span class="skill-tag">AI 产品</span>
-        <span class="skill-tag">B 端产品</span>
-        <span class="skill-tag">PRD 撰写</span>
-        <span class="skill-tag">原型设计</span>
-      </div>
-    </section>
-
-    <section class="card projects">
-      <h2 class="card-title">Projects</h2>
-      <div class="project-item">
-        <h3 class="project-name">AI 智能助手平台</h3>
-        <p class="project-desc">从 0 到 1 搭建企业级 AI 对话平台</p>
-        <span class="project-stat">[MAU: 100K+]</span>
-      </div>
-      <div class="project-item">
-        <h3 class="project-name">数据可视化后台</h3>
-        <p class="project-desc">重构企业数据看板</p>
-        <span class="project-stat">[EFFICIENCY: +40%]</span>
-      </div>
-      <div class="project-item">
-        <h3 class="project-name">用户增长体系</h3>
-        <p class="project-desc">设计完整的用户激励与留存方案</p>
-        <span class="project-stat">[RETENTION: +25%]</span>
-      </div>
-    </section>
-
-    <section class="card contact">
-      <h2 class="card-title">Contact</h2>
-      <div class="contact-list">
-        <a href="mailto:biwenjun@email.com" class="contact-item">
-          <span class="contact-icon">✉</span>
-          <div>
-            <span class="contact-label">Email</span>
-            <span class="contact-value">biwenjun@email.com</span>
-          </div>
-        </a>
-        <div class="contact-item">
-          <span class="contact-icon">◈</span>
-          <div>
-            <span class="contact-label">WeChat</span>
-            <span class="contact-value">Biwenjun_PM</span>
-          </div>
+        <div class="skill-item">
+          <p class="skill-name">产品规划</p>
+        </div>
+        <div class="skill-item">
+          <p class="skill-name">需求分析</p>
+        </div>
+        <div class="skill-item">
+          <p class="skill-name">用户研究</p>
+        </div>
+        <div class="skill-item">
+          <p class="skill-name">数据分析</p>
+        </div>
+        <div class="skill-item">
+          <p class="skill-name">AI 产品</p>
+        </div>
+        <div class="skill-item">
+          <p class="skill-name">B 端产品</p>
+        </div>
+        <div class="skill-item">
+          <p class="skill-name">PRD 撰写</p>
+        </div>
+        <div class="skill-item">
+          <p class="skill-name">原型设计</p>
         </div>
       </div>
     </section>
 
-    <div class="deco-line"></div>
+    <!-- Projects -->
+    <section class="projects-section">
+      <p class="section-label">Featured Work</p>
+      <div class="project-item">
+        <h3 class="project-name">AI 智能助手平台</h3>
+        <p class="project-desc">从 0 到 1 搭建企业级 AI 对话平台</p>
+        <span class="project-stat">MAU 10W+</span>
+      </div>
+      <div class="project-item">
+        <h3 class="project-name">数据可视化后台</h3>
+        <p class="project-desc">重构企业数据看板</p>
+        <span class="project-stat">效率 +40%</span>
+      </div>
+      <div class="project-item">
+        <h3 class="project-name">用户增长体系</h3>
+        <p class="project-desc">设计完整的用户激励与留存方案</p>
+        <span class="project-stat">留存 +25%</span>
+      </div>
+    </section>
 
-    <footer>
-      <p class="footer-text"><span>//</span> © 2026 BIWENJUN // ALL RIGHTS RESERVED</p>
+    <!-- Quote -->
+    <section class="quote-section">
+      <p class="quote-text">好的产品应该让人用了心情愉悦</p>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section">
+      <div class="contact-item">
+        <div class="contact-icon">✉</div>
+        <div>
+          <p class="contact-label">Email</p>
+          <p class="contact-value">biwenjun@email.com</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">◈</div>
+        <div>
+          <p class="contact-label">WeChat</p>
+          <p class="contact-value">Biwenjun_PM</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-banner">
+      <p class="footer-name">毕文君</p>
+      <p class="footer-date">SHANGHAI • CHINA</p>
     </footer>
   </div>
 </body>
